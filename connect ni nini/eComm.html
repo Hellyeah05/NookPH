@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Nook PH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="ecommcss.css">
+
+</head>
+
+<body>
+  <!--TOP BAR NAVIGATION-->
+  <div class="top-bar">
+    <div class="container-fluid d-flex justify-content-end gap-4 px-4">
+      <a href="#top">HOME</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">ABOUT</a>
+      <a href="order.html">ORDERS</a>
+
+      <!-- HELP Dropdown -->
+      <div class="dropdown help">
+        <a>HELP</a>
+        <div class="dropdown-content">
+          <a href="#footer-help">Contact Us</a>
+          <a href="#">FAQ</a>
+          <a href="#">Policies</a>
+          <a href="#">General</a>
+        </div>
+      </div>
+
+
+      <!-- EXPLORE Dropdown -->
+      <div class="dropdown explore">
+        <a>EXPLORE</a>
+        <div class="dropdown-content">
+          <a href="explore.html">Books on Sale</a>
+          <a href="explore.html">Books of the Year</a>
+          <a href="explore.html">Top Wishlisted Books</a>
+          <a href="explore.html">Rate & Review</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <!--MAIN NAVIGATION BAR-->
+  <nav class="navbar main-navbar shadow">
+    <div class="container-fluid d-flex align-items-center px-4">
+
+      <a href="#top" class="navbar-brand">
+        <img src="LOGO.png" alt="Logo" class="logo-img">
+      </a>
+
+      <form class="search-wrapper mx-auto color-#000">
+        <input type="search" class="search-input" placeholder="Search Books, Authors, and Genres">
+        <i class="bi bi-search search-icon"></i>
+      </form>
+
+      <div class="navbar-actions">
+        <a href="Wishlist.html" style="color: black; text-decoration: none; position: relative;"></i>
+          <i class="bi bi-heart icon-btn"></i>
+        </a>
+
+        <a href="Cart.html" style="color: black; text-decoration: none; position: relative;">
+          <i class="bi bi-cart icon-btn"></i>
+          <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size: 0.5rem; display: none;">0</span>
+        </a>
+
+        <a href="EcommREGISTER.html" id="loginBtn" class="auth-btn">SIGN UP / LOGIN</a>
+
+        <div id="profileIcon" style="display: none;">
+          <a href="Profile.html" style="color: black; text-decoration: none;">
+            <i class="bi bi-person-circle profile-trigger"></i>
+          </a>
+      </div>
+    </div> 
+  </div> 
+</nav>
+
+  <!--HERO CAROUSEL-->
+  <div id="featuredCarousel" class="carousel slide position-relative">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+         <div class="featured" style="background-image: url('hero1.jpg');">
+      <div class="featured-content">
+        <h2>MARAYA</h2>
+        <p>CARMELITA RAWR</p>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="featured" style="background-image: url('hero2.jpg');">
+      <div class="featured-content">
+        <h2>BENNY</h2>
+        <p>RAR</p>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="featured" style="background-image: url('hero3.jpg');">
+      <div class="featured-content">
+        <h2>NINI</h2>
+        <p>RAR</p>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="featured" style="background-image: url('hero4.jpg');">
+      <div class="featured-content">
+        <h2>BATO NA TO</h2>
+        <p>RAR</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+      <span class="carousel-arrow">&#10094;</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+      <span class="carousel-arrow">&#10095;</span>
+    </button>
+  </div>
+
+  <!--CATEGORY STRIP-->
+  <div class="category-strip">
+    <div href="explore.html" class="category-item active">TRENDING</div>
+    <div class="category-divider"></div>
+    <div href="explore.html" class="category-item">BEST SELLER</div>
+    <div href="explore.html" class="category-divider"></div>
+    <div class="category-item">NEW ARRIVALS</div>
+  </div>
+
+  <!--MAIN SHOP LAYOUT-->
+  <div class="main-content-area">
+    <div class="row">
+
+      <!--SIDEBAR GENRE-->
+      <div class="col-lg-3 mb-4">
+        <div class="genre-container">
+          <div class="genre-bar">GENRE</div>
+          <div class="genre-list">
+            <a href="fantasy_showcase.html" class="arrow-tab"><strong>Fantasy</strong></a>
+            <a href="literary_showcase.html" class="arrow-tab"><strong>Literary</strong></a>
+            <a href="folkliterature_showcase.html" class="arrow-tab"><strong>Folk Literature</strong></a>
+            <a href="romance_showcase.html" class="arrow-tab"><strong>Romance</strong></a>
+            <a href="mystery-thriller_showcase.html" class="arrow-tab"><strong>Mystery/Thriller</strong></a>
+            <a href="sciencefiction_showcase.html" class="arrow-tab"><strong>Science Fiction</strong></a>
+          </div> <!-- Close genre-list -->
+        </div> <!-- Close genre-container -->
+      </div> 
+
+      <div class="col-lg-9">
+
+        <!--BOOKS ON SALE-->
+        <div class="mb-5">
+          <h2 class="section-title">BOOKS ON SALE</h2>
+          <div class="row g-4">
+
+            <!--Product Card 1-->
+            <div class="col-md-4">
+              <img src="assets/LITERARY/No Longer Human.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">No Longer Human</h5>
+              <small class="text-muted">Osamu Dazai</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱972.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('No Longer Human', 972, 'assets/LITERARY/No Longer Human.jpg', 'Osamu Dazai')">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('No Longer Human', 972, 'assets/LITERARY/No Longer Human.jpg', 'Osamu Dazai')">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 2-->
+            <div class="col-md-4">
+              <img src="assets/FANTASY/Mistress of nature.PNG" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Mistress of Nature</h5>
+              <small class="text-muted">CeCelib</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱929.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('Mistress of Nature', 929, 'assets/FANTASY/Mistress of nature.PNG', 'CeCelib')">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('Mistress of Nature', 929, 'assets/FANTASY/Mistress of nature.PNG', 'CeCelib')">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 3-->
+            <div class="col-md-4">
+              <img src="assets/ROMANCE/it end with us.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">It Ends With Us</h5>
+              <small class="text-muted">Colleen Hoover</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱850.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('It Ends With Us', 850, 'assets/ROMANCE/it end with us.jpg', 'Colleen Hoover')">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('It Ends With Us', 850, 'assets/ROMANCE/it end with us.jpg', 'Colleen Hoover')">BUY NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--BEST OF 2025-->
+        <div>
+          <h2 class="section-title">BEST OF 2025</h2>
+          <div class="row g-4">
+
+            <!--Product Card 4-->
+            <div class="col-md-4">
+              <img src="assets/LITERARY/The Great Gatsby.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">The Great Gatsby(Paperback)</h5>
+              <small class="text-muted">F.Scott Fitzgerald</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱2499.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('The Great Gatsby', 2499, 'assets/LITERARY/The Great Gatsby.jpg', 'F. Scott Fitzgerald')">ADD TO
+                  CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('The Great Gatsby', 2499, 'assets/LITERARY/The Great Gatsby.jpg', 'F. Scott Fitzgerald')">BUY
+                  NOW</button>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4">
+              <img src="assets/LITERARY/No Longer Human.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">No Longer Human(Paperback)</h5>
+              <small class="text-muted">Osamu Dazai</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱972.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('No Longer Human', 972, 'assets/LITERARY/No Longer Human.jpg', 'Osamu Dazai')">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('No Longer Human', 972, 'assets/LITERARY/No Longer Human.jpg', 'Osamu Dazai')">BUY NOW</button>
+              </div>
+            </div>
+
+            
+
+            <!--Product Card 6-->
+            <div class="col-md-4">
+              <img src="assets/LITERARY/Pride and Prejudice.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Pride and Prejudice(Paperback)</h5>
+              <small class="text-muted">Jane Austen</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱951.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill"
+                  onclick="addToCart('Pride and Prejudice', 951, 'assets/LITERARY/Pride and Prejudice.jpg', 'Jane Austen')">ADD TO
+                  CART</button>
+                <button class="btn-nook-primary flex-fill"
+                  onclick="buyNow('Pride and Prejudice', 951, 'assets/LITERARY/Pride and Prejudice.jpg', 'Jane Austen')">BUY
+                  NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row">
+        <!--FOOTER(About site daw)-->
+        <div class="col-md-4 mb-4">
+          <h5>NOOK.PH</h5>
+          <p class="small text-light">
+            CODE AYAW, GALA GUSTO? ARAY MO
+          </p>
+          <div class="d-flex mt-3">
+            <a href="#" class="footer-social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <h5>SHOP</h5>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Sale</a>
+          <a href="#">Collections</a>
+        </div>
+
+        <div class="col-md-2 mb-4" id="footer-help">
+          <h5>HELP</h5>
+          <a href="#">Order Status</a>
+          <a href="#">Shipping & Delivery</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5>NEWSLETTER</h5>
+          <p class="small text-light">Subscribe to get special offers and updates.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Recipient's email">
+            <button class="btn btn-outline-light" type="button">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0">&copy; 2025 Nook PH. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="d-inline me-3 small text-light">Privacy Policy</a>
+          <a href="#" class="d-inline small text-light">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- ABOUT MODAL -->
+<div class="modal fade" id="aboutModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0" style="background:#4d0000; color:white;">
+
+      <!-- CLICK ANYWHERE TEXT -->
+      <div class="p-2 px-3 fw-bold text-decoration-underline" style="font-size:12px;">
+        TAP ANYWHERE TO EXIT
+      </div>
+
+      <!-- MAIN BODY (scrollable) -->
+      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
+
+        <!-- TITLE -->
+        <div class="text-center mb-2">
+          <h1 class="fw-bold text-uppercase m-0">About Us</h1>
+          <p class="m-0">NOOK PH. Your cozy corner for great reads.</p>
+        </div>
+
+        <!-- IMAGE + TEXT -->
+        <div class="row align-items-center mt-4">
+
+          <div class="col-md-6">
+            <img src="about1.jpg" class="img-fluid rounded">
+          </div>
+
+          <div class="col-md-6">
+            <h4 class="fw-bold">Why We Exist</h4>
+            <p>
+              We exist because reading should never feel out of reach. Many readers struggle with limited availability, high prices, or lack of options, and our goal is to remove those barriers one book at a time. 
+              We want to make it possible for people across the Philippines to find books they love, order them easily, receive them quickly, and choose formats and conditions that fit their needs and budget. 
+              Whether someone is a lifelong reader, a student searching for resources, a parent building a child’s library, or a new reader just beginning their journey, they are welcome here.
+
+            </p>
+          </div>
+            <!-- MISSION + VISION SECTION -->
+            <div class="text-center mt-5 mb-3">
+              <h2 class="fw-bold text-white">Our Mission & Vision</h2>
+            </div>
+
+            <div class="row g-4">
+
+              <!-- MISSION -->
+              <div class="col-md-6">
+                <h4 class="fw-bold text-white text-center">Our Mission</h4>
+                <div class="p-4 rounded" style="background:white; color:#6b2b2b;">
+                  NOOK PH’s mission is simple but powerful: to bring joy by making books fast, easy, and accessible with real choices in quality and format for the readers across the Philippines. 
+                  We believe books are not just items to buy. They are companions. They are teachers. They are safe spaces. They are sparks of imagination, curiosity, and inspiration. And everyone deserves the chance to experience them. 
+                  So we created a bookshop built around accessibility, flexibility, and genuine care for the reading community, where books are for everyone, not just a select few. 
+
+                </div>
+              </div>
+
+              <!-- VISION -->
+              <div class="col-md-6">
+                <h4 class="fw-bold text-white text-center">Our Vision</h4>
+                <div class="p-4 rounded" style="background:white; color:#6b2b2b;">
+                  Our vision is a Philippines where books truly reach everyone. We dream of communities where students have the resources they need, 
+                  families share stories, children grow up surrounded by books, adults rediscover the joy of reading, and books become bridges that connect people rather than barriers that divide access.
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- PARAGRAPHS BELOW -->
+            <div class="text-center mt-4 px-3">
+              <p>When readers choose to shop with us, they support a mission built on respect for readers, passion for books, commitment to service, and growth for the reading community. 
+                We value transparency, fair choices, quality standards, accessibility, and reader happiness. For us, it has never been just about selling books — it is about sharing joy, one story at a time.</p>
+              <p>Whether someone is looking for their next favorite novel, a school requirement, a meaningful gift, or a book that has the power to change their life, we are grateful to be part of that journey. 
+                Together with our readers, we hope to make reading open, joyful, and accessible for everyone in the Philippines.</p>
+              <p class="fw-bold mt-2">Welcome to NOOK PH — where every story begins.</p>
+            </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBtn = document.getElementById('loginBtn');
+      const profileIcon = document.getElementById('profileIcon');
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+      function updateUI(status) {
+        if (status) {
+          if (loginBtn) loginBtn.style.setProperty('display', 'none', 'important');
+          if (profileIcon) profileIcon.style.display = 'block';
+        } else {
+          if (loginBtn) loginBtn.style.setProperty('display', 'flex', 'important');
+          if (profileIcon) profileIcon.style.display = 'none';
+        }
+      }
+      updateUI(isLoggedIn);
+
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+        const badge = document.getElementById('cartBadge');
+
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (count > 0) {
+          badge.style.display = 'block';
+          badge.innerText = count;
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+      updateCartBadge();
+
+
+      window.addToCart = function (title, price, image, author) {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+          alert("Please login to add items to cart.");
+          return;
+        }
+
+        let cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+
+        const existingItem = cart.find(item => item.title === title);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: 'item-' + new Date().getTime(),
+            title: title,
+            price: price,
+            image: image,
+            author: author,
+            quantity: 1
+          });
+        }
+
+        localStorage.setItem('nookCart', JSON.stringify(cart));
+
+
+        updateCartBadge();
+        alert(title + " added to cart!");
+      };
+
+      window.buyNow = function (title, price, image, author) {
+        addToCart(title, price, image, author);
+        window.location.href = "";
+      };
+    });
+
+    window.addToWishlist = function (title, price, image, author) {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      if (!isLoggedIn) {
+        alert("Please login to use Wishlist.");
+        return;
+      }
+
+      let wishlist = JSON.parse(localStorage.getItem('nookWishlist')) || [];
+
+      const exists = wishlist.find(item => item.title === title);
+      if (exists) {
+        alert("Item is already in your wishlist!");
+        return;
+      }
+
+      wishlist.push({ title, price, image, author });
+      localStorage.setItem('nookWishlist', JSON.stringify(wishlist));
+      alert("Added to Wishlist!");
+    };
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Wishlist - Nook PH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="ecommcss.css">
+
+  <style>
+    body { background-color: #ffffff; font-family: sans-serif; }
+    .top-bar { height: 40px; background-color: #4d0000; display: flex; align-items: center; padding: 0 24px; }
+    .top-bar a { color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none; margin-left: 20px; }
+    .main-navbar { height: 80px; background-color: #ffffff; border-bottom: 1px solid #ddd; }
+    .logo-img { height: 120px; width: auto; object-fit: contain; }
+    .page-title { font-weight: 900; font-size: 1.8rem; text-transform: uppercase; position: absolute; left: 50%; transform: translateX(-50%); }
+    .navbar-actions { font-size: 1.5rem; gap: 20px; display: flex; }
+    .navbar-actions a { color: black; }
+
+    .wishlist-container { padding: 40px; max-width: 1200px; margin: 0 auto; }
+    
+    .wishlist-card {
+        border: 1px solid #eee;
+        padding: 15px;
+        text-align: center;
+        position: relative;
+        transition: 0.3s;
+    }
+    .wishlist-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    
+    .wish-img { height: 200px; object-fit: cover; margin-bottom: 15px; width: 100%; }
+    .wish-title { font-weight: 800; font-size: 1rem; margin-bottom: 5px; }
+    .wish-author { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+    .wish-price { font-weight: 800; color: #4d0000; font-size: 1.1rem; margin-bottom: 15px; }
+    
+    .btn-move-cart { background-color: #4d0000; color: white; border: none; padding: 8px 20px; font-weight: 700; width: 100%; font-size: 0.8rem; }
+    .btn-remove { position: absolute; top: 10px; right: 10px; color: #999; cursor: pointer; font-size: 1.2rem; background: white; border-radius: 50%; padding: 5px; }
+    .btn-remove:hover { color: #d9534f; }
+
+    .empty-state { text-align: center; padding: 80px 0; display: none; }
+    .btn-continue { background-color: white; border: 1px solid #000; padding: 10px 30px; font-weight: 700; text-decoration: none; color: black; display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="container-fluid d-flex justify-content-end gap-4 px-4">
+      <a href="eComm.html">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">ORDERS</a>
+    </div>
+  </div>
+
+  <nav class="navbar main-navbar">
+    <div class="container-fluid d-flex align-items-center px-4 position-relative">
+      <a href="eComm.html" class="navbar-brand">
+        <img src="LOGO.png" alt="Logo" class="logo-img">
+      </a>
+      <div class="page-title">MY WISHLIST</div>
+      <div class="navbar-actions">
+        <a href="Cart.html"><i class="bi bi-cart"></i></a>
+        <a href="Profile.html"><i class="bi bi-person-fill"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wishlist-container">
+    
+    <!--EMPTY-->
+    <div id="empty-wishlist" class="empty-state">
+        <h2 style="font-weight: 900;">YOUR WISHLIST IS EMPTY</h2>
+        <p style="color: #666;">Save items you love here for later.</p>
+        <a href="eComm.html" class="btn-continue">BROWSE BOOKS</a>
+    </div>
+
+    <!--FILLED-->
+    <div id="filled-wishlist" class="row g-4">
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderWishlist();
+    });
+
+    function renderWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem('nookWishlist')) || [];
+        const container = document.getElementById('filled-wishlist');
+        const emptyState = document.getElementById('empty-wishlist');
+
+        if (wishlist.length === 0) {
+            container.style.display = 'none';
+            emptyState.style.display = 'block';
+            return;
+        }
+
+        container.style.display = 'flex';
+        emptyState.style.display = 'none';
+        container.innerHTML = '';
+
+        wishlist.forEach((item, index) => {
+            const html = `
+            <div class="col-md-3">
+                <div class="wishlist-card">
+                    <i class="bi bi-x-circle-fill btn-remove" onclick="removeFromWishlist(${index})"></i>
+                    <img src="${item.image}" class="wish-img" alt="Book">
+                    <div class="wish-title">${item.title}</div>
+                    <div class="wish-author">${item.author}</div>
+                    <div class="wish-price">PHP ${item.price.toLocaleString()}</div>
+                    <button class="btn-move-cart" onclick="moveToCart(${index})">ADD TO CART</button>
+                </div>
+            </div>`;
+            container.innerHTML += html;
+        });
+    }
+
+    function removeFromWishlist(index) {
+        if(confirm("Remove from wishlist?")) {
+            let wishlist = JSON.parse(localStorage.getItem('nookWishlist')) || [];
+            wishlist.splice(index, 1);
+            localStorage.setItem('nookWishlist', JSON.stringify(wishlist));
+            renderWishlist();
+        }
+    }
+
+    function moveToCart(index) {
+        let wishlist = JSON.parse(localStorage.getItem('nookWishlist')) || [];
+        let cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+        const item = wishlist[index];
+
+        const existing = cart.find(c => c.title === item.title);
+        if(existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push({...item, quantity: 1, id: 'item-'+new Date().getTime()});
+        }
+
+        localStorage.setItem('nookCart', JSON.stringify(cart));
+        
+        wishlist.splice(index, 1);
+        localStorage.setItem('nookWishlist', JSON.stringify(wishlist));
+        
+        alert("Moved to Cart!");
+        renderWishlist();
+    }
+  </script>
+
+</body>
+</html>

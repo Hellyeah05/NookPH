@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orders</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- ======== BOOTSTRAP & CSS ======== -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="ecommcss.css">
+
+  <style>
+
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+.top-bar {
+  height: 40px;
+  width: 100%;
+  background-color: #4d0000;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-bar a {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.main-navbar {
+  height: 64px;
+  width: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 40px;
+  z-index: 999;
+}
+
+.main-navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center ;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  transform: translateX(-30px);
+}
+
+.search-wrapper {
+  position: relative;
+  width: 55%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 48px 12px 20px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgba(219, 65, 65, 0.1);
+  color: #000000;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-input::placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #000000;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.icon-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.bi-heart,
+.bi-cart
+ {
+  color: #000000;
+}
+
+.auth-btn {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  text-decoration: underline;
+}
+
+.auth-btn:focus,
+.auth-btn:active,
+.auth-btn:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+.backcontinue {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.nav-links a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: 0.3s ease;
+}
+
+
+  .col-lg-9 {
+  margin: 0 auto;
+  width: 1250px;
+  padding: 0 20px;
+}
+
+.purchases-col {
+  margin: 0 auto;
+  width: 1200px;
+  padding: 0 20px;
+}
+
+.custom-col {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.products-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 20px 0 16px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+  
+}
+.book-card-placeholder {
+  width: 230px;
+  height: 340px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+}
+
+.product-card {
+  height: 280px;
+  background-color: #f2eeee;
+  border-radius: 8px;
+}
+
+.col .custom-col img {
+  height: 10px
+}
+
+.red-popup-box {
+  background-color: #4d0000;
+  height: 70vh;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+:root {
+  --nook-red: #4d0000;
+}
+
+.section-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.price-text {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.btn-nook-primary {
+  background-color: var(--nook-red);
+  color: white;
+  border: none;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.btn-nook-primary:hover {
+  background-color: #4d0000;
+  color: white;
+}
+
+.footer-custom {
+  background-color: var(--nook-red);
+  color: white;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-top: auto;
+  flex: 1;
+}
+
+.footer-custom h5 {
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  color: var(--nook-pink);
+}
+
+.footer-custom a {
+  color: #e0e0e0;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-custom a:hover {
+  color: var(--nook-pink);
+  text-decoration: underline;
+}
+
+.footer-social-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.2);
+  margin: 2rem 0;
+}
+
+
+.purchases-header {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.purchases-tabs {
+  background: var(--nook-red);
+  display: flex;
+  gap: 0;
+  padding: 6px;
+  border-radius: 2px;
+  box-shadow: none;
+  width: 100%;        
+  align-items: center;
+  flex-wrap: wrap;    
+}
+
+.purchases-tabs button {
+  flex: 1 1 0;                
+  text-align: center;         
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 12px 12px;         
+  font-weight: 700;
+  cursor: pointer;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  white-space: nowrap;
+}
+
+
+.purchases-tabs button:last-child {
+  border-right: 0;
+}
+
+.purchases-tabs button.active {
+  box-shadow: inset 0 -4px 0 0 #fff;
+}
+
+
+.search-area {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.maroon-empty {
+  background-color: var(--nook-red);
+  color: #fff;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 3px;
+}
+
+
+.orders-container {
+  background: #fff;
+  padding: 18px;
+  border: 6px solid var(--nook-red);
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.order-card {
+  padding: 14px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-card:last-child {
+  border-bottom: 0;
+}
+
+.order-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-meta .left { color: #444; font-weight: 600; }
+.order-meta .right { text-align: right; min-width: 160px; }
+
+.item-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.item-row img {
+  width: 90px;
+  height: 120px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+.item-details .title { font-weight: 800; }
+.item-details .author { color: #6b6b6b; }
+.item-details .price-note { font-style: italic; color: #6b6b6b; }
+
+
+.order-actions .btn-outline-secondary,
+.order-actions .btn-outline-danger {
+  background-color: var(--nook-red);
+  border-color: var(--nook-red);
+  color: #ffffff;
+}
+
+.order-actions .btn-outline-secondary:hover,
+.order-actions .btn-outline-secondary:focus,
+.order-actions .btn-outline-danger:hover,
+.order-actions .btn-outline-danger:focus {
+  background-color: #3c0000;
+  border-color: #3c0000;
+  color: #ffffff;
+}
+
+
+.order-actions .btn-danger {
+  background-color: var(--nook-red);
+  border-color: var(--nook-red);
+  color: #ffffff;
+}
+.order-actions .btn-danger:hover,
+.order-actions .btn-danger:focus {
+  background-color: #3c0000; 
+  border-color: #3c0000;
+  color: #fff;
+}
+
+.order-actions .btn-sm {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+
+.order-actions .btn {
+  font-family: inherit;      
+  font-weight: 700;          
+  font-size: 0.95rem;       
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  text-transform: none;      
+}
+
+@media (max-width: 1000px) {
+  .order-actions .btn { font-size: 0.9rem; }
+}
+
+
+.order-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+button { outline: none; }
+
+@media (max-width: 1000px) {
+  .col-lg-9, .purchases-col { width: 100%; padding: 0 12px; }
+  .logo-img { height: 90px; transform: translateX(0); }
+  .purchases-tabs { overflow-x: auto; }
+  .orders-container { padding: 12px; border-width: 4px; }
+  .maroon-empty { height: 260px; }
+}
+
+
+.navbar-brand { display:flex; align-items:center; gap:12px; }
+.logo-img {
+  height: 140px !important;     
+  transform: none !important;  
+  width: auto !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+
+.logo-fallback {
+  display: none;
+  font-weight: 900;
+  color: #4d0000;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-left: 6px;
+}
+  </style>
+</head>
+<body>
+
+  <!--TOP BAR NAVIGATION-->
+<div class="top-bar">
+  <div class="container-fluid d-flex justify-content-end gap-4 px-4">
+    <a href="Ecomm.html">HOME</a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">ABOUT</a>
+    <a href="order.html">ORDERS</a>
+
+    <!-- HELP Dropdown -->
+    <div class="dropdown help">
+      <a>HELP</a>
+      <div class="dropdown-content">
+        <a href="#footer-help">Contact Us</a>
+        <a href="#">FAQ</a>
+        <a href="#">Policies</a>
+        <a href="#">General</a>
+      </div>
+    </div>
+
+    <!-- EXPLORE Dropdown -->
+    <div class="dropdown explore">
+      <a>EXPLORE</a>
+      <div class="dropdown-content">
+        <a href="#">Books on Sale</a>
+        <a href="#">Books of the Year</a>
+        <a href="#">Top Wishlisted Books</a>
+        <a href="#">Rate & Review</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MAIN NAVIGATION BAR-->
+<nav class="navbar main-navbar shadow">
+  <div class="container-fluid d-flex align-items-center px-4">
+
+    <a href="Ecomm.html" class="navbar-brand">
+      <img src="LOGO.png" alt="Logo" class="logo-img">
+    </a>
+
+    <form class="search-wrapper mx-auto color-#000">
+      <input type="search" class="search-input" placeholder="Search Books, Authors, and Genres">
+      <i class="bi bi-search search-icon"></i>
+    </form>
+
+    <div class="navbar-actions">
+      <a href="Wishlist.html" style="color: black; text-decoration: none; position: relative;">
+        <i class="bi bi-heart icon-btn"></i>
+      </a>
+
+      <a href="Cart.html" style="color: black; text-decoration: none; position: relative;">
+        <i class="bi bi-cart icon-btn"></i>
+        <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          style="font-size: 0.5rem; display: none;">0</span>
+      </a>
+
+      <a href="EcommREGISTER.html" id="loginBtn" class="auth-btn">SIGN UP / LOGIN</a>
+
+      <div id="profileIcon" style="display: none;">
+        <a href="Profile.html" style="color: black; text-decoration: none;">
+          <i class="bi bi-person-circle profile-trigger"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+ 
+  
+
+
+  <div class="purchases-col">
+    <h2 class="section-title text-center">PURCHASES AND HISTORY</h2>
+
+    <div class="d-flex justify-content-end mb-2">
+      <div class="sort-by" style="color:#4d0000; font-weight:700; cursor:pointer;">Sort By <i class="bi bi-caret-down-fill ms-1"></i></div>
+    </div>
+
+
+    <div class="purchases-header">
+      <div class="purchases-tabs" role="tablist" aria-label="Order status tabs">
+        <button class="active" data-tab="all">ALL</button>
+        <button data-tab="to-pay">TO PAY</button>
+        <button data-tab="to-ship">TO SHIP</button>
+        <button data-tab="to-receive">TO RECEIVE</button>
+        <button data-tab="completed">COMPLETED</button>
+        <button data-tab="cancelled">CANCELLED</button>
+        <button data-tab="return-refund">RETURN/REFUND</button>
+      </div>
+
+      <div class="search-area">
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input id="orderSearch" type="text" class="form-control" placeholder="You can search by Author Name, Order ID or Book Name">
+        </div>
+      </div>
+    </div>
+
+
+    <div id="contentArea">
+
+      <div id="emptyBox" class="maroon-empty" style="display:none;">
+        <div id="emptyMsg" style="font-size:22px;"></div>
+      </div>
+
+
+      <div id="ordersContainer" class="orders-container" style="display:none;">
+  
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <h5>NOOK.PH</h5>
+          <p class="small text-light">
+            hahahahhahahahahaha
+          </p>
+          <div class="d-flex mt-3">
+            <a href="#" class="footer-social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+ 
+        <div class="col-md-2 mb-4">
+          <h5>SHOP</h5>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Sale</a>
+          <a href="#">Collections</a>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <h5>HELP</h5>
+          <a href="#">Order Status</a>
+          <a href="#">Shipping & Delivery</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5>NEWSLETTER</h5>
+          <p class="small text-light">Subscribe to get special offers and updates.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Recipient's email">
+            <button class="btn btn-outline-light" type="button">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0">&copy; 2025 Nook PH. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="d-inline me-3 small text-light">Privacy Policy</a>
+          <a href="#" class="d-inline small text-light">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ABOUT MODAL -->
+<div class="modal fade" id="aboutModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0" style="background:#4d0000; color:white;">
+
+      <!-- CLICK ANYWHERE TEXT -->
+      <div class="p-2 px-3 fw-bold text-decoration-underline" style="font-size:12px;">
+        TAP ANYWHERE TO EXIT
+      </div>
+
+      <!-- MAIN BODY (scrollable) -->
+      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
+
+        <!-- TITLE -->
+        <div class="text-center mb-2">
+          <h1 class="fw-bold text-uppercase m-0">About Us</h1>
+          <p class="m-0">NOOK PH. Your cozy corner for great reads.</p>
+        </div>
+
+        <!-- IMAGE + TEXT -->
+        <div class="row align-items-center mt-4">
+          <div class="col-md-6">
+            <img src="about1.jpg" class="img-fluid rounded">
+          </div>
+
+          <div class="col-md-6">
+            <h4 class="fw-bold">Why We Exist</h4>
+            <p>
+              We exist because reading should never feel out of reach. Many readers struggle with limited availability, high prices, or lack of options, and our goal is to remove those barriers one book at a time. 
+              We want to make it possible for people across the Philippines to find books they love, order them easily, receive them quickly, and choose formats and conditions that fit their needs and budget. 
+              Whether someone is a lifelong reader, a student searching for resources, a parent building a child’s library, or a new reader just beginning their journey, they are welcome here.
+
+            </p>
+          </div>
+            <!-- MISSION + VISION SECTION -->
+            <div class="text-center mt-5 mb-3">
+              <h2 class="fw-bold text-white">Our Mission & Vision</h2>
+            </div>
+
+            <div class="row g-4">
+
+              <!-- MISSION -->
+              <div class="col-md-6">
+                <h4 class="fw-bold text-white text-center">Our Mission</h4>
+                <div class="p-4 rounded" style="background:white; color:#6b2b2b;">
+                  NOOK PH’s mission is simple but powerful: to bring joy by making books fast, easy, and accessible with real choices in quality and format for the readers across the Philippines. 
+                  We believe books are not just items to buy. They are companions. They are teachers. They are safe spaces. They are sparks of imagination, curiosity, and inspiration. And everyone deserves the chance to experience them. 
+                  So we created a bookshop built around accessibility, flexibility, and genuine care for the reading community, where books are for everyone, not just a select few. 
+
+                </div>
+              </div>
+
+              <!-- VISION -->
+              <div class="col-md-6">
+                <h4 class="fw-bold text-white text-center">Our Vision</h4>
+                <div class="p-4 rounded" style="background:white; color:#6b2b2b;">
+                  Our vision is a Philippines where books truly reach everyone. We dream of communities where students have the resources they need, 
+                  families share stories, children grow up surrounded by books, adults rediscover the joy of reading, and books become bridges that connect people rather than barriers that divide access.
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- PARAGRAPHS BELOW -->
+            <div class="text-center mt-4 px-3">
+              <p>When readers choose to shop with us, they support a mission built on respect for readers, passion for books, commitment to service, and growth for the reading community. 
+                We value transparency, fair choices, quality standards, accessibility, and reader happiness. For us, it has never been just about selling books — it is about sharing joy, one story at a time.</p>
+              <p>Whether someone is looking for their next favorite novel, a school requirement, a meaningful gift, or a book that has the power to change their life, we are grateful to be part of that journey. 
+                Together with our readers, we hope to make reading open, joyful, and accessible for everyone in the Philippines.</p>
+              <p class="fw-bold mt-2">Welcome to NOOK PH — where every story begins.</p>
+            </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    const sampleOrders = [
+      {
+        id: 'ORD-20250101-001',
+        status: 'completed',
+        items: [
+          { title: 'TITLE', author: 'AUTHOR NAME', qty: 1, thumbnail: 'assets/placeholder-cover.png', price: 455 }
+        ],
+        shippingFee: 5,
+      },
+      {
+        id: 'ORD-20250101-002',
+        status: 'completed',
+        items: [
+          { title: 'TITLE', author: 'AUTHOR NAME', qty: 1, thumbnail: 'assets/placeholder-cover.png', price: 455 }
+        ],
+        shippingFee: 5,
+      }
+    ];
+
+
+    const tabButtons = Array.from(document.querySelectorAll('.purchases-tabs button'));
+    const emptyBox = document.getElementById('emptyBox');
+    const emptyMsg = document.getElementById('emptyMsg');
+    const ordersContainer = document.getElementById('ordersContainer');
+    const orderSearch = document.getElementById('orderSearch');
+
+    function formatCurrency(num) {
+      return num.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' });
+    }
+
+    function showEmpty(message) {
+      ordersContainer.style.display = 'none';
+      emptyBox.style.display = 'flex';
+      emptyMsg.textContent = message;
+    }
+
+    function renderOrders(orders) {
+      emptyBox.style.display = 'none';
+      ordersContainer.style.display = 'block';
+      ordersContainer.innerHTML = orders.map(order => {
+
+        const itemsHtml = order.items.map(it => `
+          <div class="item-row">
+            <img src="${it.thumbnail}" alt="${it.title}" onerror="this.onerror=null;this.src='https://via.placeholder.com/90x120?text=No+Image'">
+            <div class="item-details" style="flex:1;">
+              <div class="title">${it.title}</div>
+              <div class="author">${it.author}</div>
+              <div class="price-note">MASS BASIC PRICE</div>
+              <div style="margin-top:8px;">Qty: ${it.qty}x</div>
+            </div>
+            <div style="min-width:160px; text-align:right;">
+              <div style="font-size:13px;">Product Price: <strong>${formatCurrency(it.price)}</strong></div>
+              <div style="font-size:13px; margin-top:6px;">Shipping Fee: <strong>${formatCurrency(order.shippingFee)}</strong></div>
+            </div>
+          </div>
+        `).join('');
+
+        const subtotal = order.items.reduce((s,i) => s + (i.price * i.qty), 0);
+        const total = subtotal + order.shippingFee;
+
+        return `
+          <div class="order-card">
+            <div class="order-meta">
+              <div class="left">
+                <div>Order ID: ${order.id}</div>
+                <div style="font-weight:700; margin-top:6px;">PARCEL HAS BEEN DELIVERED / COMPLETED</div>
+              </div>
+              <div class="right">
+                <div style="color:#333;">Order Total:</div>
+                <div style="color:#b40000; font-weight:800; font-size:1.25rem;">${formatCurrency(total)}</div>
+              </div>
+            </div>
+
+            ${itemsHtml}
+
+            <div class="order-actions">
+              <button class="btn btn-outline-secondary btn-sm">Rate</button>
+              <button class="btn btn-danger btn-sm">Request for Return/Refund</button>
+              <button class="btn btn-outline-danger btn-sm">Buy Again</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setActiveTab(name) {
+      tabButtons.forEach(b => {
+        if (b.dataset.tab === name) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      if (name === 'completed') {
+        const results = sampleOrders.filter(o => o.status === 'completed');
+        if (!results.length) showEmpty('NO RECORDS OF COMPLETED PURCHASE');
+        else renderOrders(results);
+      } else if (name === 'cancelled') {
+        showEmpty('NO RECORDS OF CANCELLED PURCHASE');
+      } else if (name === 'return-refund') {
+        showEmpty('NO RECORDS OF RETURNED PARCELS/REQUESTED REFUND');
+      } else if (name === 'to-receive' || name === 'to-ship' || name === 'to-pay') {
+        showEmpty('NO ORDERS YET');
+      } else { 
+        if (!sampleOrders.length) showEmpty('NO ORDERS FOUND');
+        else renderOrders(sampleOrders);
+      }
+    }
+
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-tab');
+        setActiveTab(tab);
+
+        orderSearch.value = '';
+      });
+    });
+    orderSearch.addEventListener('input', (e) => {
+      const q = (e.target.value || '').trim().toLowerCase();
+      const activeTab = tabButtons.find(b => b.classList.contains('active'))?.dataset.tab || 'all';
+
+      let source = sampleOrders;
+      if (activeTab === 'completed') source = sampleOrders.filter(o => o.status === 'completed');
+
+      if (!q) {
+        setActiveTab(activeTab);
+        return;
+      }
+
+      const filtered = source.filter(o => {
+        if (o.id.toLowerCase().includes(q)) return true;
+        return o.items.some(it => (it.title + ' ' + it.author).toLowerCase().includes(q));
+      });
+
+      if (!filtered.length) showEmpty('NO MATCHING ORDERS');
+      else renderOrders(filtered);
+    });
+
+
+    window.addEventListener('load', () => {
+      setActiveTab('completed');
+    });
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginBtn = document.getElementById('loginBtn');
+    const profileIcon = document.getElementById('profileIcon');
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    function updateUI(status) {
+      if (status) {
+        if (loginBtn) loginBtn.style.setProperty('display', 'none', 'important');
+        if (profileIcon) profileIcon.style.display = 'block';
+      } else {
+        if (loginBtn) loginBtn.style.setProperty('display', 'flex', 'important');
+        if (profileIcon) profileIcon.style.display = 'none';
+      }
+    }
+    updateUI(isLoggedIn);
+
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+      const badge = document.getElementById('cartBadge');
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (count > 0) {
+        badge.style.display = 'block';
+        badge.innerText = count;
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+    updateCartBadge();
+
+    window.addToCart = function (title, price, image, author) {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      if (!isLoggedIn) { alert("Please login to add items to cart."); return; }
+
+      let cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+      const existingItem = cart.find(item => item.title === title);
+      if (existingItem) { existingItem.quantity += 1; } 
+      else { cart.push({ id:'item-'+new Date().getTime(), title, price, image, author, quantity:1 }); }
+
+      localStorage.setItem('nookCart', JSON.stringify(cart));
+      updateCartBadge();
+      alert(title + " added to cart!");
+    };
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Science Fiction Collection - Nook PH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: sans-serif;
+      overflow-x: hidden; 
+    }
+
+    .top-bar {
+      height: 40px;
+      width: 100%;
+      background-color: #4d0000;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-bar a {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .main-navbar {
+      height: 64px;
+      width: 100%;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      position: sticky;
+      top: 40px;
+      z-index: 999;
+    }
+
+    .main-navbar .container-fluid {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    .logo-img {
+      height: 120px;
+      width: auto;
+      object-fit: contain;
+      transform: translateX(-30px);
+    }
+
+    .search-wrapper {
+      position: relative;
+      width: 55%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 48px 12px 20px;
+      border: none;
+      border-radius: 40px;
+      background-color: rgba(219, 65, 65, 0.1);
+      color: #000000;
+    }
+
+    .search-input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .search-input::placeholder {
+      color: #000000;
+      opacity: 1;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #000000;
+    }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 100%;
+    }
+
+    .icon-btn {
+      font-size: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: #000000;
+    }
+
+    .auth-btn {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: #000000;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .auth-btn:hover {
+      text-decoration: underline;
+    }
+
+    .bookmarks-wrapper {
+      display: flex;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bookmark-container {
+      width: 150px;
+      height: 550px;
+      background: #4d0000;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
+      margin-left: 20px;
+      margin-bottom: 580px;
+    }
+
+    .mainbookmark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      font-size: 1.5rem;
+      margin-top: -50px;
+      justify-content: center;
+    }
+
+    .bookmark-containermini {
+      width: 150px;
+      height: 100px;
+      background: #4d0000;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: large;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
+    }
+
+    .bookmarkmini {
+      text-align: center;
+      font-weight: bold;
+      line-height: 1.2;
+      font-size: 20px;
+    }
+
+    .col-lg-9 {
+      position: absolute;
+      top: 220px;
+      left: 200px;
+      height: auto;
+      width: 1250px;
+      z-index: 1;
+    }
+
+    .custom-col {
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+
+    .products-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .book-card-placeholder {
+      width: 230px;
+      height: 340px;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .section-title {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-text {
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .btn-nook-primary {
+      background-color: #4d0000;
+      color: white;
+      border: none;
+      font-size: 0.7rem;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-radius: 2px;
+    }
+
+    .btn-nook-primary:hover {
+      background-color: #330000;
+      color: white;
+    }
+
+    .footer-custom {
+      background-color: #4d0000;
+      color: white;
+      padding-top: 3rem;
+      padding-bottom: 1.5rem;
+      margin-top: auto;
+      flex: 1;
+    }
+
+    .footer-custom h5 {
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+      color: #fadadd;
+    }
+
+    .footer-custom a {
+      color: #e0e0e0;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-custom a:hover {
+      color: #fadadd;
+      text-decoration: underline;
+    }
+
+    .footer-social-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: white;
+    }
+
+    .footer-divider {
+      border-color: rgba(255, 255, 255, 0.2);
+      margin: 2rem 0;
+    }
+
+    .profile-trigger {
+      font-size: 1.6rem;
+      color: black;
+      cursor: pointer;
+    }
+    
+    .red-popup-box {
+      background-color: #4d0000;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="container-fluid d-flex justify-content-end gap-4 px-4">
+      <a href="eComm.html">HOME</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">ABOUT</a>
+      <a href="#">ORDERS</a>
+      <a href="#">HELP</a>
+      <a href="#">EXPLORE</a>
+    </div>
+  </div>
+
+  <nav class="navbar main-navbar shadow">
+    <div class="container-fluid d-flex align-items-center px-4">
+      <a href="web2.html" class="navbar-brand">
+        <img src="assets/LOGO.png" alt="Logo" class="logo-img">
+      </a>
+
+      <form class="search-wrapper mx-auto color-#000">
+        <input type="search" class="search-input" placeholder="Search Books, Authors, and Genres">
+        <i class="bi bi-search search-icon"></i>
+      </form>
+
+      <div class="navbar-actions">
+        <a href="Wishlist.html" style="color: black; text-decoration: none;">
+            <i class="bi bi-heart icon-btn"></i>
+        </a>
+        
+        <a href="Cart.html" style="color: black; text-decoration: none; position: relative;">
+            <i class="bi bi-cart icon-btn"></i>
+            <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem; display: none;">0</span>
+        </a>
+
+        <a href="EcommREGISTER.html" id="loginBtn" class="auth-btn">SIGN UP / LOGIN</a>
+        
+        <div id="profileIcon" style="display: none;">
+            <a href="Profile.html" style="color: black; text-decoration: none;">
+                <i class="bi bi-person-circle profile-trigger"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="bookmarks-wrapper">
+    <div class="bookmark-container">
+        <div class="mainbookmark">
+          <span>S</span><span>C</span><span>I</span><span>E</span><span>N</span><span>C</span><span>E</span>
+          <span>F</span><span>I</span><span>C</span><span>T</span><span>I</span><span>O</span><span>N</span>
+        </div>
+    </div>
+
+    <div class="bookmark-containermini">
+        <div class="bookmarkmini">
+          <a href="fantasy_showcase.html" style="color: white; text-decoration: none;">
+            <span>FANTASY</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="bookmark-containermini">
+        <div class="bookmarkmini">
+          <a href="folkliterature_showcase.html" style="color: white; text-decoration: none;">
+            <span>FOLK</span>
+            <span>LITERATURE</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="bookmark-containermini">
+        <div class="bookmarkmini">
+          <a href="literary_showcase.html" style="color: white; text-decoration: none;">
+            <span>LITERARY</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="bookmark-containermini">
+        <div class="bookmarkmini">
+          <a href="mystery-thriller_showcase.html" style="color: white; text-decoration: none;">
+            <span>MYSTERY/</span>
+            <span>THRILLER</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="bookmark-containermini">
+        <div class="bookmarkmini">
+          <a href="romance_showcase.html" style="color: white; text-decoration: none;">
+            <span>ROMANCE</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="mb-5">
+      <div class="row g-4">
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Dune.jpg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Dune</h5>
+          <small class="text-muted">Frank Herbert</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱999.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Dune', 999, 'assets/SCIENCE FICTION/Dune.jpg', 'Frank Herbert')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Dune', 999, 'assets/SCIENCE FICTION/Dune.jpg', 'Frank Herbert')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/1984.jpg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">1984</h5>
+          <small class="text-muted">George Orwell</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱899.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('1984', 899, 'assets/SCIENCE FICTION/1984.jpg', 'George Orwell')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('1984', 899, 'assets/SCIENCE FICTION/1984.jpg', 'George Orwell')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Fahrenheit 451.jpg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Fahrenheit 451</h5>
+          <small class="text-muted">Ray Bradbury</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱899.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Fahrenheit 451', 899, 'assets/SCIENCE FICTION/Fahrenheit 451.jpg', 'Ray Bradbury')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Fahrenheit 451', 899, 'assets/SCIENCE FICTION/Fahrenheit 451.jpg', 'Ray Bradbury')">BUY NOW</button>
+          </div>
+        </div>
+
+         <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/The War of the Worlds.jpg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">The War of the Worlds</h5>
+          <small class="text-muted">H. G. Wells</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱849.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('The War of the Worlds', 849, 'assets/SCIENCE FICTION/The War of the Worlds.jpg', 'H. G. Wells')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('The War of the Worlds', 849, 'assets/SCIENCE FICTION/The War of the Worlds.jpg', 'H. G. Wells')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Enders game.jpeg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Ender’s Game</h5>
+          <small class="text-muted">Orson Scott Card</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱999.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Ender’s Game', 999, 'assets/SCIENCE FICTION/Enders game.jpeg', 'Orson Scott Card')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Ender’s Game', 999, 'assets/SCIENCE FICTION/Enders game.jpeg', 'Orson Scott Card')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Time machine.jpeg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">The Time Machine</h5>
+          <small class="text-muted">H. G. Wells</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱849.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('The Time Machine', 849, 'assets/SCIENCE FICTION/Time machine.jpeg', 'H. G. Wells')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('The Time Machine', 849, 'assets/SCIENCE FICTION/Time machine.jpeg', 'H. G. Wells')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/The last she.jpeg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">The Last She</h5>
+          <small class="text-muted">H.J Nelson</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱699.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('The Last She', 699, 'assets/SCIENCE FICTION/The last she.jpeg', 'H.J Nelson')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('The Last She', 699, 'assets/SCIENCE FICTION/The last she.jpeg', 'H.J Nelson')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Dune Chronicles.jpg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Dune Chronicles</h5>
+          <small class="text-muted">Frank Herbert</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱935.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Dune Chronicles', 935, 'assets/SCIENCE FICTION/Dune Chronicles.jpg', 'Frank Herbert')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Dune Chronicles', 935, 'assets/SCIENCE FICTION/Dune Chronicles.jpg', 'Frank Herbert')">BUY NOW</button>
+          </div>
+        </div>
+
+        <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Parallel.jpeg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Parallel</h5>
+          <small class="text-muted">Renoe_K</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱459.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Parallel', 459, 'assets/SCIENCE FICTION/Parallel.jpeg', 'Renoe_K')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Parallel', 459, 'assets/SCIENCE FICTION/Parallel.jpeg', 'Renoe_K')">BUY NOW</button>
+          </div>
+        </div>
+
+         <div class="col custom-col">
+          <img src="assets/SCIENCE FICTION/Experiment zero.jpeg" alt="Book Cover" class="book-card-placeholder">
+          <h5 class="fw-bold mb-0">Experiment Zero</h5>
+          <small class="text-muted">Dangeroustoken</small>
+          <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+          <div class="price-text">₱325.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn-nook-primary flex-fill" onclick="addToCart('Experiment Zero', 325, 'assets/SCIENCE FICTION/Experiment zero.jpeg', 'Dangeroustoken')">ADD TO CART</button>
+            <button class="btn-nook-primary flex-fill" onclick="buyNow('Experiment Zero', 325, 'assets/SCIENCE FICTION/Experiment zero.jpeg', 'Dangeroustoken')">BUY NOW</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>NOOK.PH</h5>
+          <p class="small text-light">
+            CODE AYAW, GALA GUSTO? ARAY MO
+          </p>
+          <div class="d-flex mt-3">
+            <a href="#" class="footer-social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <h5>SHOP</h5>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Sale</a>
+          <a href="#">Collections</a>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <h5>HELP</h5>
+          <a href="#">Order Status</a>
+          <a href="#">Shipping & Delivery</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5>NEWSLETTER</h5>
+          <p class="small text-light">Subscribe to get special offers and updates.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Recipient's email">
+            <button class="btn btn-outline-light" type="button">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0">&copy; 2025 Nook PH. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="d-inline me-3 small text-light">Privacy Policy</a>
+          <a href="#" class="d-inline small text-light">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-carousel-size">
+      <div class="modal-content">
+        <div class="red-popup-box">
+          <h2>About Us</h2>
+          <p>
+            Welcome to Nook PH. We are dedicated to providing the best selection of books, authors, and genres. 
+            Our mission is to foster a community of readers and dreamers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBtn = document.getElementById('loginBtn');
+      const profileIcon = document.getElementById('profileIcon');
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+      function updateUI(status) {
+        if (status) {
+          if (loginBtn) loginBtn.style.setProperty('display', 'none', 'important');
+          if (profileIcon) profileIcon.style.display = 'block';
+        } else {
+          if (loginBtn) loginBtn.style.setProperty('display', 'flex', 'important');
+          if (profileIcon) profileIcon.style.display = 'none';
+        }
+      }
+      updateUI(isLoggedIn);
+
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+        const badge = document.getElementById('cartBadge');
+
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (count > 0) {
+          badge.style.display = 'block';
+          badge.innerText = count;
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+      updateCartBadge();
+
+      window.addToCart = function (title, price, image, author) {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+          alert("Please login to add items to cart.");
+          return;
+        }
+
+        let cart = JSON.parse(localStorage.getItem('nookCart')) || [];
+
+        const existingItem = cart.find(item => item.title === title);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: 'item-' + new Date().getTime(),
+            title: title,
+            price: price,
+            image: image,
+            author: author,
+            quantity: 1
+          });
+        }
+
+        localStorage.setItem('nookCart', JSON.stringify(cart));
+
+        updateCartBadge();
+        alert(title + " added to cart!");
+      };
+
+      window.buyNow = function (title, price, image, author) {
+        addToCart(title, price, image, author);
+        window.location.href = "Cart.html";
+      };
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>UI Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
+</head>
+<style>
+    /*TOP BAR*/
+.top-bar {
+  height: 40px;
+  width: 100%;
+  background-color: #4d0000;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-bar a {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+/* TOP BAR DROPDOWNS: HELP & EXPLORE */
+.top-bar {
+  height: 40px;
+  width: 100%;
+  background-color: #4d0000;
+  display: flex;
+  align-items: center;        
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  gap: 20px;                  
+}
+
+.top-bar a {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.top-bar .dropdown {
+  position: relative;
+}
+
+.top-bar .dropdown > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  color: #ffffff; 
+  text-decoration: none;
+}
+
+/* DROPDOWN CONTENT */
+.top-bar .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;                     
+  background-color: var(--nook-red);
+  min-width: 180px;
+  border-radius: 5px;
+  z-index: 1000;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+.top-bar .dropdown.explore .dropdown-content,
+.top-bar .dropdown.help .dropdown-content {
+  right: 0;
+  left: auto;
+}
+
+
+.top-bar .dropdown-content a {
+  color: #ffffff;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+}
+
+.top-bar .dropdown-content a:hover {
+  background-color: #6b0000;  
+}
+
+
+.top-bar .dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*MAIN NAVBAR*/
+.main-navbar {
+  height: 64px;
+  width: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 40px;
+  z-index: 999;
+}
+
+.main-navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/*LOGo*/
+.navbar-brand {
+  display: flex;
+  align-items: center ;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  transform: translateX(-30px);
+}
+
+/*SEARCH*/
+.search-wrapper {
+  position: relative;
+  width: 55%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 48px 12px 20px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgba(219, 65, 65, 0.1);
+  color: #000000;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-input::placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #000000;
+}
+
+/*RIGHT ACTIONS (ICONS + AUTH)*/
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.icon-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.bi-heart,
+.bi-cart
+ {
+  color: #000000;
+}
+
+.auth-btn {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  text-decoration: underline;
+}
+
+.auth-btn:focus,
+.auth-btn:active,
+.auth-btn:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+.backcontinue {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.nav-links a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: 0.3s ease;
+}
+
+/*-Product Area-*/
+
+  .col-lg-9 {
+  margin: 0 auto;
+  width: 1250px;
+  padding: 0 20px;
+}
+
+.custom-col {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.products-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 20px 0 16px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+  
+}
+.book-card-placeholder {
+  width: 230px;
+  height: 340px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+}
+
+.product-card {
+  height: 280px;
+  background-color: #f2eeee;
+  border-radius: 8px;
+}
+
+.col .custom-col img {
+  height: 10px
+}
+
+.red-popup-box {
+  background-color: #4d0000;
+  height: 70vh;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+:root {
+  --nook-red: #4d0000;
+}
+
+.section-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.price-text {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.btn-nook-primary {
+  background-color: var(--nook-red);
+  color: white;
+  border: none;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.btn-nook-primary:hover {
+  background-color: #4d0000;
+  color: white;
+}
+
+/* Footer Styles */
+.footer-custom {
+  background-color: var(--nook-red);
+  color: white;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-top: auto;
+  flex: 1;
+}
+
+.footer-custom h5 {
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  color: var(--nook-pink);
+}
+
+.footer-custom a {
+  color: #e0e0e0;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-custom a:hover {
+  color: var(--nook-pink);
+  text-decoration: underline;
+}
+
+.footer-social-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.2);
+  margin: 2rem 0;
+}
+
+/*--EXPERIENCE FEEDBACK--*/
+
+main.container{
+      max-width: var(--page-max);
+      margin:30px auto 80px;
+      padding: 0 var(--content-pad);
+    }
+
+    .title-section{
+      text-align:center;
+      margin-bottom: 6px;
+    }
+    .page-title{
+      margin:18px 0 6px;
+      font-size:64px;
+      color:var(--maroon);
+      letter-spacing:2px;
+      font-weight:800;
+    }
+    .subtitle{
+      margin:0 0 18px;
+      color:var(--maroon);
+      font-style:italic;
+      color: #7a2a2a;
+    }
+
+    .rating-section {
+      position: relative;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      align-items:center;
+      margin-top: 22px;
+    }
+
+    /* star buttons */
+    .star {
+      background:transparent;
+      border:0;
+      width:84px;
+      height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      padding:6px;
+      border-radius:6px;
+    }
+    .star:focus{outline:4px solid rgba(122,13,13,0.08); outline-offset:6px}
+    .star svg{ width:84px; height:84px; display:block; }
+    .star svg path{ fill: #ffd24d; opacity: 0.18; transition:opacity .12s, transform .12s; }
+    .star:hover svg path{ transform:scale(1.03); opacity: 0.32; }
+    .star.filled svg path{ opacity:1; filter: drop-shadow(0 2px 0 rgba(0,0,0,0.06)); }
+
+    /* avatar bubble that sits on the stars (visible when a star is selected) */
+    .avatar-bubble {
+      position:absolute;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+      overflow:hidden;
+      border:4px solid rgba(255,255,255,0.95);
+      display:none; /* shown when a star is selected */
+      transform: translate(-50%, -40%);
+      transition: left .18s ease, top .18s ease, opacity .18s;
+      z-index:10;
+      background:#fff;
+    }
+
+    .comment-section{
+      margin:18px 0 36px;
+    }
+    .comment-textarea{
+      width:90%;
+      min-height:160px;
+      border:2px solid #c7c7c7;
+      padding:18px;
+      font-size:16px;
+      font-family:inherit;
+      resize:vertical;
+      outline:none;
+      color:#333;
+      border-radius:3px;
+    }
+    .comment-textarea::placeholder{
+      color:var(--maroon);
+      font-style:italic;
+      opacity:0.95;
+      text-align:left;
+    }
+
+    .submit-section {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .submit-btn {
+      background: #4d0000;
+      color: #fff;
+      border: none;
+      width: 340px;
+      height: 54px;
+      font-size: 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: inset 0 -4px 0 rgba(0,0,0,0.08);
+      text-align: center;
+      font-weight:700;
+    }
+    .submit-btn:hover { 
+      background-color: #630101;
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .page-title{ font-size:44px; }
+      .star{ width:64px; height:64px; }
+      .star svg{ width:64px; height:64px; }
+      .avatar-bubble{ width:46px; height:46px; }
+    }
+
+    @media (max-width:520px){
+      .page-title{ font-size:32px; }
+      .search-row{ padding-left:12px; padding-right:12px; }
+      .logo{ left: 12px; }
+    }
+
+
+
+</style>
+
+<body>
+  <!--TOP BAR NAVIGATION-->
+  <div class="top-bar">
+    <div class="container-fluid d-flex justify-content-end gap-4 px-4">
+      <a href="eComm.html">HOME</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">ABOUT</a>
+      <a href="#">ORDERS</a>
+
+      <!-- HELP Dropdown -->
+      <div class="dropdown help">
+        <a>HELP</a>
+        <div class="dropdown-content">
+          <a href="#footer-help">Contact Us</a>
+          <a href="#">FAQ</a>
+          <a href="#">Policies</a>
+          <a href="#">General</a>
+        </div>
+      </div>
+
+
+      <!-- EXPLORE Dropdown -->
+      <div class="dropdown explore">
+        <a>EXPLORE</a>
+        <div class="dropdown-content">
+          <a href="#BOOKS ON SALE">Books on Sale</a>
+          <a href="#BOOKS OF THE YEAR">Books of the Year</a>
+          <a href="#TOP WISHLISTED BOOKS">Top Wishlisted Books</a>
+          <a href="#RATE & REVIEW">Rate & Review</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <!--MAIN NAVIGATION BAR-->
+  <nav class="navbar main-navbar shadow">
+    <div class="container-fluid d-flex align-items-center px-4">
+
+      <a href="#top" class="navbar-brand">
+        <img src="assets/LOGO.png" alt="Logo" class="logo-img">
+      </a>
+
+      <form class="search-wrapper mx-auto color-#000">
+        <input type="search" class="search-input" placeholder="Search Books, Authors, and Genres">
+        <i class="bi bi-search search-icon"></i>
+      </form>
+
+      <div class="navbar-actions">
+        <!--Heart-->
+        <i class="bi bi-heart icon-btn"></i>
+        <!--Cart-->
+        <i class="bi bi-cart icon-btn"></i>
+
+        <!--Log in button ni maraya-->
+        <a href="EcommLOGIN.html" id="loginBtn" class="auth-btn">SIGN UP / LOGIN</a>
+        <!--Profile ni maraya-->
+        <div id="profileIcon" style="display: none;">
+    <a href="Profile.html" style="color: black; text-decoration: none;">
+        <i class="bi bi-person-circle profile-trigger"></i>
+    </a>
+</div>
+
+    </div>
+  </nav>
+
+
+<!--PRODUCTS AREA-->
+  <div class="col-lg-9">
+
+        <!--BOOKS ON SALE-->
+        <div class="mb-5">
+          <h2 class="section-title" id="TRENDING">TRENDING</h2>
+          <div class="row g-4">
+
+            <!--Product Card 1-->
+            <div class="col custom-col">
+                <img src="assets/FANTASY/Olympus academy.PNG" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Olympus Academy </h5>
+                <small class="text-muted">Mahriyumm </small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱685.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 2-->
+            <div class="col custom-col">
+                <img src="assets/FOLK LITERATURE/The Odyssey.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Odyssey</h5>
+                <small class="text-muted">Homer</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱899.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 3-->
+            <div class="col custom-col">
+                <img src="assets/LITERARY/No Longer Human.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">No Longer Human</h5>
+                <small class="text-muted">Osamu Dazai</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱972.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+             <!--Product Card 4-->
+             <div class="col custom-col">
+                <img src="assets/SCIENCE FICTION/Dune.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Dune</h5>
+                <small class="text-muted">Frank Herbert</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱999.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 5-->
+            <div class="col custom-col">
+                <img src="assets/ROMANCE/Red, White & Royal Blue.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Red, White & Royal...</h5>
+                <small class="text-muted">Casey McQuiston</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱699.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+          </div>
+
+          <h2 class="section-title" id="BESTSELLERS">BESTSELLERS</h2>
+          <div class="row g-4">
+            <!--Product Card 6-->
+            <div class="col custom-col">
+                <img src="assets/MYSTERY-THRILLER/hell university.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Hell University</h5>
+                <small class="text-muted">KnightinBlack</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱400.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 7-->
+            <div class="col custom-col">
+                <img src="assets/FANTASY/Titan academy.PNG" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0"> Titan Academy </h5>
+                <small class="text-muted">April Avery</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱3,917.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+            <!--Product Card 8-->
+            <div class="col custom-col">
+                <img src="assets/FOLK LITERATURE/Percy Jackson the Olympians The Lightning Thief.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Percy Jackson & the...</h5>
+                <small class="text-muted">Rick Riordan</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱565.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 9-->
+            <div class="col custom-col">
+                <img src="assets/LITERARY/Pride and Prejudice.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0"> Pride and Prejudice</h5>
+                <small class="text-muted">Jane Austen</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱951.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+            <!--Product Card 10-->
+            <div class="col custom-col">
+                <img src="assets/SCIENCE FICTION/1984.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">1984</h5>
+                <small class="text-muted">George Orwell</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱899.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+          </div>
+
+          <h2 class="section-title" id="NEW ARRIVALS">NEW ARRIVALS</h2>
+          <div class="row g-4">
+            <!--Product Card 11-->
+            <div class="col custom-col">
+                <img src="assets/ROMANCE/Beach Read.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Beach Read</h5>
+                <small class="text-muted"> Emily Henry</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱649.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+            <!--Product Card 12-->
+            <div class="col custom-col">
+                <img src="assets/MYSTERY-THRILLER/the silent patient.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Silent Patient</h5>
+                <small class="text-muted">Alex Michaelides</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱590.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 13-->
+            <div class="col custom-col">
+                <img src="assets/FANTASY/Iron flame.PNG" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Iron Flame </h5>
+                <small class="text-muted">Rebecca Yarros</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱2,030.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 14-->
+            <div class="col custom-col">
+                <img src="assets/FOLK LITERATURE/The Iliad.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Iliad</h5>
+                <small class="text-muted">Homer</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱1,404.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+            <!--Product Card 15-->
+            <div class="col custom-col">
+                <img src="assets/LITERARY/The Great Gatsby.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Great Gatsby</h5>
+                <small class="text-muted">F. Scott Fitzgerald</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱2499.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+          </div>
+
+          <h2 class="section-title" id="BOOKS ON SALE">BOOKS ON SALE</h2>
+          <div class="row g-4">
+            <!--Product Card 16-->
+            <div class="col custom-col">
+                <img src="assets/SCIENCE FICTION/Fahrenheit 451.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">Fahrenheit 451</h5>
+                <small class="text-muted">Ray Bradbury</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱899.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 17-->
+            <div class="col custom-col">
+                <img src="assets/ROMANCE/The Love Hypothesis.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Love Hypothesis</h5>
+                <small class="text-muted">Ali Hazelwood</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱795.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 18-->
+            <div class="col custom-col">
+                <img src="assets/MYSTERY-THRILLER/the bridesmaid.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Bridesmaid</h5>
+                <small class="text-muted">Cate Quinn</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱1060.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+
+            <!--Product Card 19-->
+            <div class="col custom-col">
+                <img src="assets/SCIENCE FICTION/The War of the Worlds.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The War of the Worlds</h5>
+                <small class="text-muted">H. G. Wells</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱849.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+            <!--Product Card 20-->
+            <div class="col custom-col">
+                <img src="assets/ROMANCE/The Viscount Who Loved Me.jpg" alt="Book Cover" class="book-card-placeholder">
+                <h5 class="fw-bold mb-0">The Viscount Who...</h5>
+                <small class="text-muted">Julia Quinn</small>
+                <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+                <div class="price-text">₱475.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                  <button class="btn-nook-primary flex-fill">BUY NOW</button>
+                </div>
+              </div>
+          </div>
+          
+          <h2 class="section-title" id="BOOKS OF THE YEAR">BOOKS OF THE YEAR</h2>
+          <div class="row g-4">
+            <!--Product Card 21-->
+            <div class="col custom-col">
+              <img src="assets/FANTASY/A day of fallen night.PNG" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">A Day of Fallen Night</h5>
+              <small class="text-muted">Samantha Shannon </small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">1,536.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 22-->
+            <div class="col custom-col">
+              <img src="assets/FOLK LITERATURE/the argonautica.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">The Argonautica</h5>
+              <small class="text-muted">Apollonius of Rhodes</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">900.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+            <!--Product Card 23-->
+            <div class="col custom-col">
+              <img src="assets/LITERARY/Rashomon.jpeg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Rashomon and Other...</h5>
+              <small class="text-muted"> Ryūnosuke Akutagawa</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱949.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 24-->
+            <div class="col custom-col">
+              <img src="assets/MYSTERY-THRILLER/the devil oxford.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">The Devil in Oxford</h5>
+              <small class="text-muted">Jess Armstrong</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">1115.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 25-->
+            <div class="col custom-col">
+              <img src="assets/ROMANCE/People We Meet on Vacation.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">People We Meet on...</h5>
+              <small class="text-muted">Emily Henry</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱1,120.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="section-title" id="TOP WISHLISTED BOOKS">TOP WISHLISTED BOOKS</h2>
+          <div class="row g-4">
+            <!--Product Card 26-->
+            <div class="col custom-col">
+              <img src="assets/SCIENCE FICTION/The last she.jpeg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">The Last She</h5>
+              <small class="text-muted">H.J Nelson</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">699.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 27-->
+            <div class="col custom-col">
+              <img src="assets/FANTASY/Harry Potter .PNG" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Harry Potter and the...</h5>
+              <small class="text-muted">J.K Rowling - Karl James Mouthford</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱2,900.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 28-->
+            <div class="col custom-col">
+              <img src="assets/MYSTERY-THRILLER/haven_t killed in years.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Haven’t Killed in Years</h5>
+              <small class="text-muted">Amy K. Green</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱550.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+
+            <!--Product Card 29-->
+            <div class="col custom-col">
+              <img src="assets/ROMANCE/me before you.jpg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">Me Before You</h5>
+              <small class="text-muted">Jojo Moyes</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">799.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+            <!--Product Card 30-->
+            <div class="col custom-col">
+              <img src="assets/LITERARY/Mockingbird.jpeg" alt="Book Cover" class="book-card-placeholder">
+              <h5 class="fw-bold mb-0">To kill a mockingbird</h5>
+              <small class="text-muted">Harper Lee</small>
+              <div class="text-muted" style="font-size: 0.8rem;">STANDARD PRICE</div>
+              <div class="price-text">₱985.00 <span style="font-size:0.7rem; font-weight:normal;">PHP</span></div>
+              <div class="d-flex gap-2 mt-2">
+                <button class="btn-nook-primary flex-fill">ADD TO CART</button>
+                <button class="btn-nook-primary flex-fill">BUY NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+<!---EXPERIENCE FEEDBACK AREA-->
+  <main class="container" role="main" id="RATE & REVIEW">
+    <section class="title-section">
+      <h1 class="page-title">SHARE YOUR EXPERIENCE</h1>
+      <p class="subtitle">How would you rate your shopping experience with us?</p>
+    </section>
+
+    <section class="rating-section" aria-label="Rating">
+      <div class="stars" id="stars" role="radiogroup" aria-label="Star rating">
+        <button class="star" data-value="1" role="radio" aria-checked="false" aria-label="1 star">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.653L19.5 24
+                     12 19.771 4.5 24l1.7-8.597L.4 9.75l7.932-1.732z"/>
+          </svg>
+        </button>
+        <button class="star" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.653L19.5 24
+                     12 19.771 4.5 24l1.7-8.597L.4 9.75l7.932-1.732z"/>
+          </svg>
+        </button>
+        <button class="star" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.653L19.5 24
+                     12 19.771 4.5 24l1.7-8.597L.4 9.75l7.932-1.732z"/>
+          </svg>
+        </button>
+        <button class="star" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.653L19.5 24
+                     12 19.771 4.5 24l1.7-8.597L.4 9.75l7.932-1.732z"/>
+          </svg>
+        </button>
+        <button class="star" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.653L19.5 24
+                     12 19.771 4.5 24l1.7-8.597L.4 9.75l7.932-1.732z"/>
+          </svg>
+        </button>
+      </div>
+
+
+    <section class="comment-section">
+      <textarea id="comment" class="comment-textarea" placeholder="Write something" aria-label="Write something"></textarea>
+    </section>
+
+    <section class="submit-section">
+      <button id="submitBtn" class="submit-btn" aria-label="Submit feedback">Submit</button>
+    </section>
+  </main>
+
+
+<footer class="footer-custom">
+    <div class="container">
+      <div class="row">
+        <!-- Brand / About -->
+        <div class="col-md-4 mb-4">
+          <h5>NOOK.PH</h5>
+          <p class="small text-light">
+            CODE AYAW, GALA GUSTO? ARAY MO
+          </p>
+          <div class="d-flex mt-3">
+            <a href="#" class="footer-social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="footer-social-icon"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="col-md-2 mb-4">
+          <h5>SHOP</h5>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Sale</a>
+          <a href="#">Collections</a>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <h5>HELP</h5>
+          <a href="#">Order Status</a>
+          <a href="#">Shipping & Delivery</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5>NEWSLETTER</h5>
+          <p class="small text-light">Subscribe to get special offers and updates.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Recipient's email">
+            <button class="btn btn-outline-light" type="button">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0">&copy; 2025 Nook PH. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="d-inline me-3 small text-light">Privacy Policy</a>
+          <a href="#" class="d-inline small text-light">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<script>
+  (function(){
+    const stars = document.querySelectorAll('.star');
+    const avatar = document.getElementById('avatarBubble');
+    const starsContainer = document.getElementById('stars');
+    const commentEl = document.getElementById('comment');
+    const submitBtn = document.getElementById('submitBtn');
+
+    let selectedRating = 0;
+
+    // Helper: update star visuals and aria attributes
+    function updateStars(rating){
+      stars.forEach((star) => {
+        const val = Number(star.dataset.value);
+        if(val <= rating){
+          star.classList.add('filled');
+          star.setAttribute('aria-checked','true');
+        } else {
+          star.classList.remove('filled');
+          star.setAttribute('aria-checked','false');
+        }
+      });
+    }
+
+    // Position avatar near the star element (centered above)
+    function positionAvatarForStar(starEl){
+      if(!starEl) return;
+      const containerRect = starsContainer.getBoundingClientRect();
+      const starRect = starEl.getBoundingClientRect();
+      // center horizontally on the star's right side (to mimic your image overlap)
+      const centerX = (starRect.left + starRect.right) / 2;
+      const top = starRect.top - containerRect.top; // distance from container top
+      // place bubble slightly above the star center
+      const leftWithinContainer = centerX - containerRect.left;
+      avatar.style.left = leftWithinContainer + 'px';
+      avatar.style.top = (top - 26) + 'px';
+      avatar.style.display = 'block';
+      avatar.setAttribute('aria-hidden','false');
+    }
+
+    // Clear avatar if no selection
+    function hideAvatar(){
+      avatar.style.display = 'none';
+      avatar.setAttribute('aria-hidden','true');
+    }
+
+    // click handlers
+    stars.forEach((star) => {
+      star.addEventListener('click', (e) => {
+        const value = Number(star.dataset.value) || 0;
+        selectedRating = value;
+        updateStars(selectedRating);
+        positionAvatarForStar(star);
+        // ensure keyboard focus remains usable
+        star.focus();
+        console.log("Selected rating:", selectedRating);
+      });
+
+      // keyboard support (Enter/Space)
+      star.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          star.click();
+        }
+        // left/right arrow to move selection
+        if(e.key === 'ArrowRight' || e.key === 'ArrowUp'){
+          e.preventDefault();
+          const next = star.nextElementSibling;
+          if(next && next.classList.contains('star')) next.focus();
+        }
+        if(e.key === 'ArrowLeft' || e.key === 'ArrowDown'){
+          e.preventDefault();
+          const prev = star.previousElementSibling;
+          if(prev && prev.classList.contains('star')) prev.focus();
+        }
+      });
+    });
+
+    // Save submission
+    function saveSubmission(submission){
+      try {
+        const key = "feedback_submissions";
+        const raw = localStorage.getItem(key);
+        const arr = raw ? JSON.parse(raw) : [];
+        arr.push(submission);
+        localStorage.setItem(key, JSON.stringify(arr));
+        return true;
+      } catch (err){
+        console.error("Saving submission failed:", err);
+        return false;
+      }
+    }
+
+    function showMessage(msg){
+      // simple alert keeps browser default behavior
+      alert(msg);
+    }
+
+    submitBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      const comment = commentEl.value && commentEl.value.trim();
+      if(!selectedRating || selectedRating < 1){
+        showMessage("Please select a rating before submitting.");
+        // focus first star
+        const firstStar = document.querySelector('.star');
+        if(firstStar) firstStar.focus();
+        return;
+      }
+      if(!comment){
+        showMessage("Please write a comment before submitting.");
+        commentEl.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      const submission = {
+        rating: selectedRating,
+        comment,
+        created_at: new Date().toISOString()
+      };
+
+      const ok = saveSubmission(submission);
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+
+      if(!ok){
+        showMessage("Failed to save your feedback locally. See console for details.");
+        return;
+      }
+
+      showMessage("Thank you for your feedback!");
+
+      // clear comment but keep star rating (like the screenshot)
+      commentEl.value = '';
+    });
+
+    // If the page loads with a selection, show avatar position (none by default)
+    hideAvatar();
+
+    // small: reposition avatar on window resize if visible
+    window.addEventListener('resize', () => {
+if (selectedRating) {
+  const starEl = document.querySelector(`.star[data-value="${selectedRating}"]`);
+  if (starEl) positionAvatarForStar(starEl);
+}
+});
+  })();
+</script>
+
+</body>
+</html>
